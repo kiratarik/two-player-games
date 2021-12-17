@@ -1,0 +1,19 @@
+{
+  "name": "two-player-games",
+  "version": "1.0.0",
+  "description": "A Frontend website where you can play simple two-player games.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiratarik/two-player-games.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiratarik/two-player-games/issues"
+  },
+  "homepage": "https://github.com/kiratarik/two-player-games#readme"
+}
