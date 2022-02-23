@@ -1,5 +1,8 @@
 function GamesMenu() {
-  return <h1>Games Menu</h1>
+  return (<section id="GamesMenu">
+    <h1>Games Menu</h1>
+    
+  </section>)
 }
 
 export default GamesMenu
