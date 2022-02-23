@@ -1,5 +1,11 @@
+import TicTacToe from "./components/games/TicTacToe"
+
 function App() {
-  return <h1>Hello World</h1>
+  return (<section id="App">
+    <h1>App</h1>
+    <TicTacToe />
+  </section>)
+  
 }
 
 export default App
