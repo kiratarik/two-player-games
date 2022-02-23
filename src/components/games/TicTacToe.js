@@ -1,29 +1,39 @@
 import React, { useState } from 'react';
-import createGrid from "../lib/common"
 
 function TicTacToe() {
-  const grid = createGrid(3,3)
+  const arr = [0,1,2,3,4,5,6,7,8]
   const [count, setCount] = useState(0)
   const [result, setResult] = useState("")
   const [matrix, setMatrix] = useState([0,0,0,0,0,0,0,0,0])
-  const cells = document.querySelectorAll(".cell")
-  for (let i=0; i<cells.length; i++) {
-    cells[i].onclick = {click}
-    cells[i].name = i
+
+  async function click(e) {
+    const id = Number(e.target.id)
+    if (matrix[id] === 0 && result === "") {
+      const newMatrix = matrix
+      console.log(count % 2)
+      if (count % 2 === 0) {
+        e.target.classList.add("red")
+        newMatrix[id] = 1
+      } else if (count % 2 === 1) {
+        e.target.classList.add("blue")
+        newMatrix[id] = -1
+      }
+      console.log(newMatrix)
+      setMatrix(newMatrix)
+      setCount(count + 1)
+    }
+    
   }
 
-  function click(e) {
-    const newMatrix = matrix
-    if (count % 2 === 0) {
-      e.target.classList.add("red")
-      newMatrix[e.target.name] = 1
-    } else if (count % 2 === 1) {
-      e.target.classList.add("blue")
-      newMatrix[e.target.name] = -1
+  function reset() {
+    // window.location.reload()
+    setCount(0)
+    setResult("")
+    setMatrix([0,0,0,0,0,0,0,0,0])
+    const cells = document.querySelectorAll(".cell")
+    for (let i=0; i<cells.length; i++) {
+      cells[i].className = "cell"
     }
-    e.target.onclick = {}
-    setMatrix(newMatrix)
-    setCount(count + 1)
   }
 
   function winCondition() {
@@ -48,6 +58,10 @@ function TicTacToe() {
   }
 
   React.useEffect(() => {
+
+  }, [])
+
+  React.useEffect(() => {
     const win = winCondition()
     if (win !== "") {
       setResult(win)
@@ -58,13 +72,19 @@ function TicTacToe() {
 
   return (<section id="TicTacToe">
     <h1>Tic Tac Toe</h1>
-    <h2>Player {(count % 2) + 1}'s turn:</h2>
+    {(result === "") && 
+      <h2>Player {(count % 2) + 1}'s turn:</h2>
+    }
     {!(result === "") && 
       <h2>{result}</h2>
     }
-    <div class="board">
-      {grid}
+    <div className="board">
+      {arr.map((num) => (
+        <div key={num} id={num} className="cell" onClick={click}>
+        </div>
+      ))}
     </div>
+    <button onClick={reset}>Reset</button>
   </section>)
 }
 

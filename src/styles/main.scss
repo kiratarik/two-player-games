@@ -13,4 +13,15 @@
 #TicTacToe {
   .red {background-color: red;}
   .blue {background-color: blue;}
+  .board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 200px;
+  }
+  .cell {
+    width: calc((100% /3) - 4px);
+    height: calc((100% /3) - 4px);
+    border: 2px solid black;
+  }
 }
